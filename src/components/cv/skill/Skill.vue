@@ -99,14 +99,14 @@ const getItems = () => {
       icon: "",
       image: "/icons/skill/aws.svg",
       color: "",
-      value: 50,
+      value: 60,
       experience: "2",
     },
     {
       skill: "Vue js",
       icon: "mdi-vuejs",
       color: "success",
-      value: 90,
+      value: 85,
       experience: "4",
     },
     {
@@ -127,7 +127,7 @@ const getItems = () => {
       skill: "Java",
       icon: "mdi-language-java",
       color: "#634533",
-      value: 75,
+      value: 85,
       experience: "4",
     },
     {
@@ -142,7 +142,7 @@ const getItems = () => {
       skill: "Docker",
       icon: "mdi-docker",
       color: "blue",
-      value: 55,
+      value: 60,
       experience: "2",
     },
   ];
