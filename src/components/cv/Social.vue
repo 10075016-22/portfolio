@@ -3,7 +3,8 @@
     <v-card-text>
       <LinkedIn />    
       <Whatsapp />
-      <Email class="ml-2"/>
+      <Email class="ma-2"/>
+      <Gitlab/>
     </v-card-text>
   </v-card>
 </template>
@@ -11,4 +12,5 @@
 import Whatsapp from '@/components/cv/buttons/Whatsapp.vue'
 import LinkedIn from '@/components/cv/buttons/LinkedIn.vue'
 import Email from '@/components/cv/buttons/Email.vue'
+import Gitlab from '@/components/cv/buttons/Gitlab.vue'
 </script>

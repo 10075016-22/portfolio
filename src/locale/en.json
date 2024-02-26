@@ -1,0 +1,35 @@
+{
+  "message": "Hello word",
+  "titles": {
+    "aboutMe": "About me",
+    "habilities": "Skills and Knowledge",
+    "workExperience": "Work experience"
+  },
+  "text": {
+    "aboutMe": "Passionate software developer with 4 years of full-stack experience, specialized in technologies such as Vue js, JavaScript, Java, Node.js, Python, PHP, and Laravel. Proficient in handling SQL and NoSQL databases, as well as implementing efficient and scalable solutions. My focus involves building robust, high-performance applications and using Docker to streamline deployment and management. Always looking for new challenges to keep growing professionally - let's connect and explore the world of software development together! 🚀"
+  },
+  "others": {
+    "year": "Year",
+    "years": "Years",
+    "actualidad": "Actuality"
+  },
+  "cargos": {
+    "backend": "Backend developer",
+    "frontend": "Frontend developer",
+    "fullstacks": "Fullstacks developer",
+    "ingenieroSoftware": "Software Engineer",
+    "desarrolladorSoftware": "Software developer",
+    "desarrolladorWeb": "Web developer"
+  },
+  "experience": {
+    "descripcion": {
+      "techboss": "Fullstacks developer, in charge of providing solutions at the level of services and design of the SEIF product, in addition, I have created new functionality to platforms within the company. Lead developer of creation, maintenance and deployments of new product (Guvi).",
+      "sipremcol": "Leader of the frontend development team, in charge of the creation of products such as Siprem GD, Lavado, Poda, etc. Providing support to the rest services using the company's web applications.",
+      "gmp": "Developer with fullstacks functions, implementing solutions using php technologies, CRM and Vue Js frontend development framework.",
+      "inxait": "In charge of creating html pieces for sending email marketing with platforms like masiv, mailgun, etc. And backend software development using technologies such as php (Laravel). In addition to performing frontend tasks using Vue js.",
+      "ies": "Developer mainly in charge of redesigning views of applications created in web environments as well as optimizing some processes at frontend level of legacy systems.",
+      "sstec": "Frontend web programmer, in charge of the design and implementation of new views for computer products created in the company on the heavy transport sector.",
+      "gera": "Mainly in charge of automating internal processes of the company and providing support for computer media, during this period of time he developed several systems using Java language for web and desktop applications."
+    }
+  }
+}

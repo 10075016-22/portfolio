@@ -3,10 +3,13 @@
     <!-- Sección del nombre -->
     <v-row>
       <v-col class="d-flex justify-space-between">
-        <p :class="[ mobile ? 'text-h5' : 'text-h4', 'font-weight-bold']">Santiago Enoc Lopez Lazaro</p>
-        <div>
-          <v-btn elevation="0" icon> <v-icon>mdi-translate</v-icon></v-btn>
-          <v-btn @click="toggleTheme" elevation="0" icon> <v-icon>mdi-theme-light-dark</v-icon></v-btn>
+        <p :class="[ mobile ? 'text-subtitle' : 'text-h4', 'font-weight-bold', 'mt-2']">Santiago Lopez Lazaro</p>
+        <div :class="[mobile ? 'text-center' : '']">
+          <v-avatar size="auto" class="mr-2" density="compact">
+            <v-img :src="`/icons/${$i18n.locale}.png`"/>
+          </v-avatar>
+          <v-btn elevation="0" icon @click="$i18n.locale = $i18n.locale == 'es' ? 'en' : 'es' " :size="mobile ? 'small' : 'default'" class="mr-1"> <v-icon>mdi-translate</v-icon></v-btn>
+          <v-btn @click="toggleTheme" elevation="0" icon :size="mobile ? 'small' : 'default' "> <v-icon>mdi-theme-light-dark</v-icon></v-btn>
         </div>
       </v-col>
     </v-row>
@@ -29,16 +32,21 @@
     
     <!-- Sección de habilidades -->
     <Skill />
+
+    <Experience />
   </v-container>
 </template>
 
 <script setup>
 import { useDisplay, useTheme } from 'vuetify/lib/framework.mjs'
+
 import BasicList from '@/components/cv/BasicList.vue'
 import SocialButtons from '@/components/cv/Social.vue'
 import Photo from '@/components/cv/Photo.vue'
 import AboutMe from '@/components/cv/about/AboutMe.vue'
 import Skill from '@/components/cv/skill/Skill.vue'
+import Experience from '@/components/cv/experience/Experience.vue'
+
 
 const { mobile } = useDisplay()
 const theme = useTheme()
@@ -46,4 +54,5 @@ const theme = useTheme()
 const toggleTheme = () => {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
 }
+
 </script>

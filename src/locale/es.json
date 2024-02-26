@@ -1,0 +1,36 @@
+{
+  "message": "Hola mundo",
+  "titles": {
+    "aboutMe": "Sobre mi",
+    "habilities": "Habilidades y Conocimientos",
+    "workExperience": "Experiencia laboral"
+  },
+  "text": {
+    "aboutMe": "Desarrollador de software apasionado con 4 años de experiencia en el ámbito full-stack, especializado en tecnologías como Vue js, JavaScript, Java, Node.js, Python, PHP, y Laravel. Competente en el manejo de bases de datos SQL y NoSQL, así como en la implementación de soluciones eficientes y escalables. Mi enfoque implica la construcción de aplicaciones robustas y de alto rendimiento y el uso de Docker para agilizar el despliegue y la gestión. Siempre en busca de nuevos retos para seguir creciendo profesionalmente. ¡Conectemos y exploremos juntos el mundo del desarrollo de software! 🚀"
+  },
+  "others": {
+    "year": "Año",
+    "years": "Años",
+    "actualidad": "Actualidad"
+  },
+  "cargos": {
+    "backend": "Desarrollador Backend",
+    "frontend": "Desarrollador Frontend",
+    "fullstacks": "Desarrollador Fullstacks",
+    "ingenieroSoftware": "Ingeniero de software",
+    "desarrolladorSoftware": "Desarrollador de software",
+    "desarrolladorWeb": "Desarrolaldor Web"
+  },
+  "experience": {
+    "descripcion": {
+      "techboss": "Desarrollador Fullstacks, encargado de brindar soluciones a nivel de servicios y diseño del producto SEIF, además, he realizado creación de nuevas funcionalidad a plataformas dentro de la compañía. Desarrollador principal de creación, mantenimiento y despliegues de nuevo producto (Guvi)",
+      "sipremcol": "Lider de equipo de desarrollo frontend, encargado de la creación de productos cómo Siprem GD, Lavado, Poda, etc. Brindando soporte a los servicios rest que utiilza las aplicaciones web de la compañía",
+      "gmp": "Desarrollador con funciones de fullstacks, implementando soluciones haciendo de tecnologías php, CRM y marco de desarrollo frontend Vue Js.",
+      "inxait": "Encargado de crear piezas html para envío de email marketing con plataformas cómo masiv, mailgun, etc. Y desarrollo de software a nivel backend usando tecnologías cómo php (Laravel). Además de realizar tareas de frontend empleando Vue js",
+      "ies": "Desarrollador encargado principalmente de rediseñar vistas de aplicaciones creadas en entornos web así cómo de optimizar algunos procesos a nivel frontend de sistemas legados.",
+      "sstec": "Programador web frontend, encargado del diseño e implementación de nuevas vistas para productos informaticos creados en la empresa del lado del sector de transporte pesado.",
+      "gera": "Encargado principalmente de realizar automatizaciones de procesos internos de la compañía y dar soporte de medios informaticos, Dentro de este periodo de tiempo se realizó diversos sistemas haciendo uso de lenguaje Java para aplicaciones web y de escritorio."
+    }
+  }
+}
+
