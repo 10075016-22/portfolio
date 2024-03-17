@@ -15,6 +15,7 @@
       class="mt-2"
       color="blue"
       :indeterminate="props.progress === 0"
+      :max="props.max"
     />
   </v-col>
 </template>
@@ -47,5 +48,9 @@ const props = defineProps({
     type: Number,
     default: () => 0,
   },
+  max: {
+    type: Number,
+    default: () => 100
+  }
 });
 </script>

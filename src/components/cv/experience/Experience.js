@@ -7,7 +7,7 @@ export function Experience(props) {
   const Listado = computed(() => [
     {
       fecha: `Sep 2022 - ${t("others.actualidad")}`,
-      cargo: t("cargos.backend"),
+      cargo: t("cargos.fullstacks"),
       empresa: "Techboss SAS",
       descripcion: t('experience.descripcion.techboss'),
       sKill: [

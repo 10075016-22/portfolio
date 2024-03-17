@@ -6,7 +6,7 @@
     "workExperience": "Work experience"
   },
   "text": {
-    "aboutMe": "Passionate software developer with 4 years of full-stack experience, specialized in technologies such as Vue js, JavaScript, Java, Node.js, Python, PHP, and Laravel. Proficient in handling SQL and NoSQL databases, as well as implementing efficient and scalable solutions. My focus involves building robust, high-performance applications and using Docker to streamline deployment and management. Always looking for new challenges to keep growing professionally - let's connect and explore the world of software development together! 🚀"
+    "aboutMe": "Hello 👋, My name is Santiago Lopez, a systems engineer passionate about innovation and personal growth. I enjoy facing challenges and constantly learning. Outside of work, I love spending time outdoors, with friends and family, or traveling on my motorcycle, something I love to do. I am excited about the opportunities the future has in store and ready to face them with determination and a smile on my face."
   },
   "others": {
     "year": "Year",
@@ -31,5 +31,12 @@
       "sstec": "Frontend web programmer, in charge of the design and implementation of new views for computer products created in the company on the heavy transport sector.",
       "gera": "Mainly in charge of automating internal processes of the company and providing support for computer media, during this period of time he developed several systems using Java language for web and desktop applications."
     }
+  },
+  "hover": {
+    "descargar": "Download",
+    "hablemosWhatsapp": "Let's talk by whatsapp",
+    "linkedIn": "Visit my profile",
+    "gitlab": "Visit my Gitlab profile",
+    "email": "Contact me by mail"
   }
 }
