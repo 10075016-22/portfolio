@@ -84,9 +84,8 @@ const aSkill = ref([
     skill: "Python",
     icon: "mdi-language-python",
     color: "teal",
-    value: 2,
-    experience: "2",
-    max: 5
+    value: 0,
+    experience: "2"
   },
 ]);
 
