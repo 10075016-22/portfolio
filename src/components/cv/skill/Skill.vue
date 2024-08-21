@@ -80,6 +80,14 @@ const aSkill = ref([
     value: 0,
     experience: "2",
   },
+  {
+    skill: "Python",
+    icon: "mdi-language-python",
+    color: "teal",
+    value: 2,
+    experience: "2",
+    max: 5
+  },
 ]);
 
 onMounted(() => {
