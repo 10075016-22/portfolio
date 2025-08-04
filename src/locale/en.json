@@ -53,7 +53,8 @@
       "subject": "Subject",
       "message": "Message",
       "send": "Send Message"
-    }
+    },
+    "mylinkedIn": "My linkedIn profile"
   },
   "projects": {
     "all": "All",
@@ -76,6 +77,22 @@
     "gestionPremios": "Prizes management",
     "gestionGanadores": "Winners management",
     "gestionEnvioCorreos": "Email sending management",
-    "integracionWompi": "Wompi integration for payments"
+    "integracionWompi": "Wompi integration for payments",
+    "diseñoResponsive": "Responsive design" 
+  },
+  "regisst": {
+    "title": "REGISST",
+    "description": "Document management system for safety and health at work",
+    "fullDescription": "Development of a document management system for safety and health at work. I implemented a modular architecture with a REST API and a frontend with Vue 3 and Typescript."
+  },
+  "naafar": {
+    "title": "Naafar Travel",
+    "description": "Site for travel lotteries",
+    "fullDescription": "Naafar Travel is a site developed to promote travel lotteries, it has an internal system that allows managing lotteries, users, winners and email sending with new updates"
+  },
+  "millersDesigns": {
+    "title": "Miller's Designs",
+    "description": "Site for graphic design services promotion.",
+    "fullDescription": "Miller's Design is a site developed to promote graphic design services."
   }
 }

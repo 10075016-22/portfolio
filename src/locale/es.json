@@ -53,7 +53,8 @@
       "subject": "Asunto",
       "message": "Mensaje",
       "send": "Enviar Mensaje"
-    }
+    },
+    "mylinkedIn": "Mi perfil de LinkedIn"
   },
   "projects": {
     "all": "Todos",
@@ -76,7 +77,23 @@
     "gestionPremios": "Gestión de premios",
     "gestionGanadores": "Gestión de ganadores",
     "gestionEnvioCorreos": "Gestión de envío de correos",
-    "integracionWompi": "Integración con Wompi para pagos"
+    "integracionWompi": "Integración con Wompi para pagos",
+    "diseñoResponsive": "Diseño responsive"
+  },
+  "regisst": {
+    "title": "REGISST",
+    "description": "Sistema de gestión documental para manejo de documentos de seguridad y salud en el trabajo",
+    "fullDescription": "Desarrollo de un sistema documental para la gestión de documentos de seguridad y salud en el trabajo. Implementé arquitectura modular con API REST y frontend con Vue 3 y Typescript."
+  },
+  "naafar": {
+    "title": "Naafar Travel",
+    "description": "Sitio web para sorteos de viajes",
+    "fullDescription": "Naafar Travel es un sitio web desarrollado para promocionar sorteos de viajes, cuenta con un sistema interno que permite gestionar los sorteos, usuarios, ganadores y envío de correos con nuevas actualizaciones"
+  },
+  "millersDesigns": {
+    "title": "Miller's Designs",
+    "description": "Sitio web para promocionar servicios de diseño gráfico.",
+    "fullDescription": "Miller's Design es un sitio web desarrollado para promocionar productos de diseño."
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container xl="8">
     <!-- Sección del nombre -->
     <v-row>
       <v-col class="d-flex justify-space-between">

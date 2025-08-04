@@ -73,37 +73,43 @@
     </v-row>
 
     <!-- Modal para detalles del proyecto -->
-    <v-dialog v-model="showProjectModal" max-width="800">
+    <v-dialog v-model="showProjectModal" :max-width="mobile ? '100%' : '650'"  scrollable style="justify-content: flex-start;">
       <v-card v-if="selectedProject">
-        <v-img :src="selectedProject.image" height="300" cover/>
-        <v-card-title class="text-h5 pa-4">
+        <v-img :src="selectedProject.image" height="250" cover/>
+        <v-card-title class="text-h5 pa-4 font-weight-bold">
           {{ selectedProject.title }}
         </v-card-title>
         <v-card-text class="pa-4">
-          <p class="text-body-1 mb-4">{{ selectedProject.fullDescription }}</p>
-          
-          <h4 class="text-h6 mb-2">{{ $t('projects.features') }}:</h4>
-          <ul class="mb-4">
-            <li v-for="feature in selectedProject.features" :key="feature" class="mb-1">
-              {{ feature }}
-            </li>
-          </ul>
+          <v-row>
+            <v-col>
+              <p class="text-body-1 mb-4 text-justify">{{ selectedProject.fullDescription }}</p>
+              
+              <h4 class="text-h6 mb-2">{{ $t('projects.features') }}:</h4>
+              <v-list density="compact" class="mb-4">
+                <v-list-item v-for="feature in selectedProject.features" :key="feature" :title="feature" >
+                  <template v-slot:prepend>
+                    <v-icon icon="mdi-check" color="success" />
+                  </template>
+                </v-list-item>
+              </v-list>
 
-          <h4 class="text-h6 mb-2">{{ $t('projects.technologies') }}:</h4>
-          <div class="d-flex flex-wrap gap-2 mb-4">
-            <v-chip v-for="tech in selectedProject.technologies" :key="tech" color="primary" variant="outlined">
-              {{ tech }}
-            </v-chip>
-          </div>
+              <h4 class="text-h6 mb-2">{{ $t('projects.technologies') }}:</h4>
+              <v-list density="compact" class="mb-4">
+                <v-chip v-for="tech in selectedProject.technologies" :key="tech" :color="getTechColor(tech)" variant="outlined" class="ma-1">
+                  {{ tech }}
+                </v-chip>
+              </v-list>
 
-          <div class="d-flex gap-2">
-            <v-btn v-if="selectedProject.demo" :href="selectedProject.demo" target="_blank" color="primary" prepend-icon="mdi-play-circle">
-              {{ $t('projects.demo') }}
-            </v-btn>
-            <v-btn v-if="selectedProject.github" :href="selectedProject.github" target="_blank" color="black" variant="outlined" prepend-icon="mdi-github" :disabled="selectedProject.github === ''">
-              {{ $t('projects.code') }}
-            </v-btn>
-          </div>
+              <div class="d-flex gap-2">
+                <v-btn v-if="selectedProject.demo" :href="selectedProject.demo" target="_blank" color="primary" prepend-icon="mdi-play-circle">
+                  {{ $t('projects.demo') }}
+                </v-btn>
+                <v-btn v-if="selectedProject.github" :href="selectedProject.github" target="_blank" color="black" variant="outlined" prepend-icon="mdi-github">
+                  {{ $t('projects.code') }}
+                </v-btn>
+              </div>
+            </v-col>
+          </v-row>
         </v-card-text>
         <v-card-actions class="pa-4">
           <v-spacer />
@@ -141,12 +147,12 @@ const filters = ref([
 ])
 
 // Datos de proyectos
-const projects = ref([
+const projects = computed(() => [
   {
     id: 1,
-    title: 'REGISST',
-    description: 'Sistema de gestión documental para manejo de documentos de seguridad y salud en el trabajo',
-    fullDescription: 'Desarrollo de un sistema documental para la gestión de documentos de seguridad y salud en el trabajo. Implementé arquitectura modular con API REST y frontend en Vue.js.',
+    title: t('regisst.title'),
+    description: t('regisst.description'),
+    fullDescription: t('regisst.fullDescription'),
     image: '/projects/regisst.png',
     status: t('projects.inProduction'),
     technologies: ['Vue 3', 'Typescript', 'Pinia', 'Laravel', 'MySQL', 'AWS'],
@@ -162,13 +168,13 @@ const projects = ref([
   },
   {
     id: 2,
-    title: 'Naafar Travel',
-    description: 'Sitio web para sorteos de viajes',
-    fullDescription: 'Naafar Travel es un sitio web desarrollado para promocionar sorteos de viajes, cuenta con un sistema interno que permite gestionar los sorteos, usuarios, ganadores y envío de correos con nuevas actualizaciones',
+    title: t('naafar.title'),
+    description: t('naafar.description'),
+    fullDescription: t('naafar.fullDescription'),
     image: '/projects/naafar.png',
     status: t('projects.finished'),
     technologies: ['Vue.js', 'Laravel', 'MySQL', 'Wompi'],
-    category: ['vue', 'laravel'],
+    category: ['vue', 'laravel', 'javascript'],
     demo: '',
     github: '',
     features: [
@@ -182,15 +188,18 @@ const projects = ref([
   },
   {
     id: 3,
-    title: "Miller's Designs",
-    description: 'Sitio web para promocionar servicios de diseño gráfico.',
-    fullDescription: 'Miller\'s Design es un sitio web desarrollado para promocionar productos de diseño.',
+    title: t('millersDesigns.title'),
+    description: t('millersDesigns.description'),
+    fullDescription: t('millersDesigns.fullDescription'),
     image: '/projects/miller-designs.png',
     status: t('projects.inProduction'),
     technologies: ['React', 'Typescript', 'Tailwind', 'Laravel'],
     category: ['react', 'laravel', 'typescript'],
     demo: 'https://millers-designs.com/',
     github: '',
+    features: [
+      t('projectsfeatures.diseñoResponsive')
+    ]
   }
 ])
 

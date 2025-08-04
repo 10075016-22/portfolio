@@ -88,6 +88,14 @@ const aSkill = ref([
     value: 0,
     experience: "2"
   },
+  {
+    skill: "Laravel",
+    icon: "mdi-laravel",
+    color: "#F05340",
+    value: 0,
+    experience: "3",
+    max: 5
+  }
 ]);
 
 onMounted(() => {
@@ -100,8 +108,8 @@ const getItems = () => {
       skill: "Javascript",
       icon: "mdi-language-javascript",
       color: "warning",
-      value: 4,
-      experience: "4",
+      value: 5,
+      experience: "5",
       max: 5
     },
     {
@@ -117,16 +125,16 @@ const getItems = () => {
       skill: "Vue js",
       icon: "mdi-vuejs",
       color: "success",
-      value: 4,
-      experience: "4",
+      value: 5,
+      experience: "5",
       max: 5
     },
     {
       skill: "PHP",
       icon: "mdi-language-php",
       color: "#777BB3",
-      value: 4,
-      experience: "4",
+      value: 5,
+      experience: "5",
       max: 5
     },
     {
@@ -141,8 +149,8 @@ const getItems = () => {
       skill: "Java",
       icon: "mdi-language-java",
       color: "#634533",
-      value: 4,
-      experience: "4",
+      value: 2,
+      experience: "2",
       max: 5
     },
     {
@@ -168,6 +176,14 @@ const getItems = () => {
       color: "teal",
       value: 2,
       experience: "2",
+      max: 5
+    },
+    {
+      skill: "Laravel",
+      icon: "mdi-laravel",
+      color: "#F05340",
+      value: 3,
+      experience: "3",
       max: 5
     }
   ];

@@ -1,7 +1,7 @@
 <template>
   <SimpleTitle :title="$t('titles.aboutMe')"/>
   <v-row>
-    <v-col cols="12">
+    <v-col cols="12" xl="10">
       <p class="text-justify">
         {{ $t('text.aboutMe') }}
       </p>

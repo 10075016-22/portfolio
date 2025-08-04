@@ -13,17 +13,17 @@
       >
         <div class="timeline-content">
           <div class="timeline-header">
-            <div class="timeline-date">
+            <div class="timeline-date text-info">
               <v-chip :color="experience.color" variant="flat" size="small" class="mb-2" >
                 {{ experience.fecha }}
               </v-chip>
             </div>
-            <h3 class="timeline-title">{{ experience.cargo }}</h3>
+            <h3 class="timeline-title text-info">{{ experience.cargo }}</h3>
             <p class="timeline-company">{{ experience.empresa }}</p>
           </div>
           
           <div class="timeline-body">
-            <p class="timeline-description">{{ experience.descripcion }}</p>
+            <p class="timeline-description text-justify">{{ experience.descripcion }}</p>
             
             <div class="timeline-skills">
               <v-chip v-for="skill in experience.sKill" :key="skill.text" :color="skill.color || 'primary'" size="small" variant="outlined" class="ma-1">
@@ -35,8 +35,8 @@
           </div>
         </div>
         
-        <div class="timeline-dot" :style="{ backgroundColor: experience.color }">
-          <v-icon icon="mdi-briefcase" color="white" size="20" />
+        <div class="timeline-dot pa-3" :style="{ backgroundColor: experience.backgroundIcon }">
+          <v-icon icon="mdi-xml" color="white" size="15" />
         </div>
       </div>
     </div>
@@ -44,30 +44,31 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SimpleTitle from '@/components/utils/SimpleTitle.vue'
 import colors from '@/utils/colors'
 
 const { t } = useI18n()
 
-const experiences = ref([
+const experiences = computed(() => [
   {
     id: 1,
     fecha: `Sep 2022 - Ago 2025`,
     cargo: t("cargos.fullstacks"),
     empresa: "Techboss SAS",
     descripcion: t('experience.descripcion.techboss'),
-    color: 'primary',
+    color: 'info',
+    backgroundIcon: '#2196F3',
     sKill: [
       { color: colors.PHP, icon: "mdi-language-php", text: "PHP" },
       { color: colors.VUE, icon: "mdi-vuejs", text: "VUE JS" },
-      { color: '', icon: "", text: "WebRTSP", image: '/icons/skill/webrtc.svg' },
-      { color: '', icon: "", text: "Mysql", image: '/icons/skill/mysql.svg' },
-      { color: '', icon: "", text: "MongoDB", image: '/icons/skill/mongodb.svg' },
+      { color: 'grey', icon: "", text: "WebRTSP", image: '/icons/skill/webrtc.svg' },
+      { color: 'info', icon: "", text: "Mysql", image: '/icons/skill/mysql.svg' },
+      { color: 'success', icon: "", text: "MongoDB", image: '/icons/skill/mongodb.svg' },
       { color: '', icon: "", text: "AWS", image: '/icons/skill/aws.svg' }
     ],
-    isVisible: false
+    isVisible: true
   },
   {
     id: 2,
@@ -75,14 +76,15 @@ const experiences = ref([
     cargo: t("cargos.ingenieroSoftware"),
     empresa: "Sipremcol",
     descripcion: t('experience.descripcion.sipremcol'),
-    color: 'success',
+    color: 'info',
+    backgroundIcon: '#2196F3',
     sKill: [
       { color: colors.PHP, icon: "mdi-language-php", text: "PHP" },
       { color: colors.VUE, icon: "mdi-vuejs", text: "VUE JS" },
       { color: '', icon: "", text: "Mysql", image: '/icons/skill/mysql.svg' },
       { color: colors.DOCKER, icon: "mdi-docker", text: "Docker" }
     ],
-    isVisible: false
+    isVisible: true
   },
   {
     id: 3,
@@ -90,12 +92,13 @@ const experiences = ref([
     cargo: t("cargos.backend"),
     empresa: "Graphic Market Company",
     descripcion: t('experience.descripcion.gmp'),
-    color: 'warning',
+    color: 'info',
+    backgroundIcon: '#2196F3',
     sKill: [
       { color: colors.NODE, icon: "mdi-nodejs", text: "Node JS" },
       { color: colors.VUE, icon: "mdi-vuejs", text: "VUE JS" }
     ],
-    isVisible: false
+    isVisible: true
   },
   {
     id: 4,
@@ -104,12 +107,13 @@ const experiences = ref([
     empresa: "Inxait Corp",
     descripcion: t('experience.descripcion.inxait'),
     color: 'info',
+    backgroundIcon: '#2196F3',
     sKill: [
       { color: colors.LARAVEL, icon: "mdi-laravel", text: "Laravel" },
       { color: colors.VUE, icon: "mdi-vuejs", text: "VUE JS" },
       { color: colors.LARAVEL, icon: "mdi-language-html5", text: "HTML 5" }
     ],
-    isVisible: false
+    isVisible: true
   },
   {
     id: 5,
@@ -117,12 +121,13 @@ const experiences = ref([
     cargo: t("cargos.desarrolladorSoftware"),
     empresa: "Intelligent Electronic Solutions (IES)",
     descripcion: t('experience.descripcion.ies'),
-    color: 'error',
+    color: 'info',
+    backgroundIcon: '#2196F3',
     sKill: [
       { color: colors.LARAVEL, icon: "mdi-angularjs", text: "Angular" },
       { color: colors.JAVA, icon: "mdi-language-java", text: "Java" }
     ],
-    isVisible: false
+    isVisible: true
   },
   {
     id: 6,
@@ -130,11 +135,12 @@ const experiences = ref([
     cargo: t("cargos.desarrolladorSoftware"),
     empresa: "SSTEC",
     descripcion: t('experience.descripcion.sstec'),
-    color: 'secondary',
+    color: 'info',
+    backgroundIcon: '#2196F3',
     sKill: [
       { color: colors.JAVASCRIPT, icon: "mdi-language-javascript", text: "Javascript" }
     ],
-    isVisible: false
+    isVisible: true
   },
   {
     id: 7,
@@ -142,14 +148,15 @@ const experiences = ref([
     cargo: t("cargos.desarrolladorWeb"),
     empresa: "Inversiones GERA SAS",
     descripcion: t('experience.descripcion.gera'),
-    color: 'teal',
+    color: 'info',
+    backgroundIcon: '#2196F3',
     sKill: [
       { color: colors.PHP, icon: "mdi-language-php", text: "PHP" },
       { color: colors.JAVA, icon: "mdi-language-java", text: "Java" },
       { color: colors.JAVASCRIPT, icon: "mdi-language-javascript", text: "Javascript" },
       { color: '', icon: "", text: "Mysql", image: '/icons/skill/mysql.svg' }
     ],
-    isVisible: false
+    isVisible: true
   }
 ])
 

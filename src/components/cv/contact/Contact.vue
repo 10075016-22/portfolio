@@ -9,7 +9,7 @@
           <p class=" mb-6">{{ $t('contact.description') }}</p>
           
           <v-row justify="center">
-            <v-col v-for="method in contactMethods" :key="method.id" :cols="mobile ? 6 : 4" class="contact-method" :class="{ 'contact-method--animated': method.isVisible }" @click="handleContact(method)">
+            <v-col v-for="(method, index) in contactMethods" :key="index" :cols="mobile ? 6 : 4" class="contact-method" :class="{ 'contact-method--animated': method.isVisible }" @click="handleContact(method)">
               <div class="contact-method-icon">
                 <v-icon :icon="method.icon" size="32" :color="method.color" />
               </div>
@@ -29,10 +29,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useDisplay } from 'vuetify/lib/framework.mjs'
 import SimpleTitle from '@/components/utils/SimpleTitle.vue'
 
+const { t } = useI18n()
 const { mobile } = useDisplay()
 
 const isSubmitting = ref(false)
@@ -44,7 +46,7 @@ const form = ref({
   message: ''
 })
 
-const contactMethods = ref([
+const contactMethods = computed(() => [
   {
     id: 1,
     title: 'Email',
@@ -52,7 +54,7 @@ const contactMethods = ref([
     icon: 'mdi-email',
     color: 'primary',
     action: 'mailto:sell3.1998@hotmail.com',
-    isVisible: false
+    isVisible: true
   },
   {
     id: 2,
@@ -60,17 +62,17 @@ const contactMethods = ref([
     value: '+57 300 275 0183',
     icon: 'mdi-whatsapp',
     color: 'success',
-    action: 'https://wa.me/573002750183',
-    isVisible: false
+    action: 'https://wa.me/+573002750183',
+    isVisible: true
   },
   {
     id: 3,
     title: 'LinkedIn',
-    value: 'Mi perfil de LinkedIn',
+    value: t('contact.mylinkedIn'),
     icon: 'mdi-linkedin',
     color: 'info',
     action: 'https://www.linkedin.com/in/santiago-lopez-06812410a/',
-    isVisible: false
+    isVisible: true
   },
   {
     id: 4,
@@ -79,7 +81,7 @@ const contactMethods = ref([
     icon: 'mdi-github',
     color: 'dark',
     action: 'https://github.com/10075016-22',
-    isVisible: false
+    isVisible: true
   }
 ])
 
