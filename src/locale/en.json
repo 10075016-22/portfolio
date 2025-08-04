@@ -3,7 +3,10 @@
   "titles": {
     "aboutMe": "About me",
     "habilities": "Skills and Knowledge",
-    "workExperience": "Work experience"
+    "workExperience": "Work experience",
+    "projects": "Projects",
+    "stats": "Professional Statistics",
+    "contact": "Contact"
   },
   "text": {
     "aboutMe": "Hello 👋, My name is Santiago Lopez, a systems engineer passionate about innovation and personal growth. I enjoy facing challenges and constantly learning. Outside of work, I love spending time outdoors, with friends and family, or traveling on my motorcycle, something I love to do. I am excited about the opportunities the future has in store and ready to face them with determination and a smile on my face."
@@ -37,6 +40,42 @@
     "hablemosWhatsapp": "Let's talk by whatsapp",
     "linkedIn": "Visit my profile",
     "gitlab": "Visit my Gitlab profile",
+    "github": "Visit my Github profile",
     "email": "Contact me by mail"
+  },
+  "contact": {
+    "subtitle": "Have a project in mind?",
+    "description": "I'm always interested in new opportunities and challenging projects. Don't hesitate to contact me if you want to work together or just want to chat about technology.",
+    "formTitle": "Send me a message",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message"
+    }
+  },
+  "projects": {
+    "all": "All",
+    "features": "Main features",
+    "technologies": "Technologies used",
+    "demo": "Demo",
+    "code": "Code",
+    "status": "Status",
+    "inProduction": "In Production",
+    "inDevelopment": "In Development",
+    "paused": "Paused",
+    "finished": "Finished"
+  },
+  "projectsfeatures": {
+    "gestionDocumentos": "Document management",
+    "gestionUsuarios": "User management",
+    "gestionRoles": "Role management",
+    "gestionPermisos": "Permission management",
+    "gestionSorteos": "Sorteos management",
+    "gestionPremios": "Prizes management",
+    "gestionGanadores": "Winners management",
+    "gestionEnvioCorreos": "Email sending management",
+    "integracionWompi": "Wompi integration for payments"
   }
 }

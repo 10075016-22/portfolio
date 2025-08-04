@@ -30,10 +30,19 @@
     <!-- Sección de información adicional -->
     <AboutMe />
     
+    <!-- Sección de estadísticas -->
+    <!-- <Stats /> -->
+    
     <!-- Sección de habilidades -->
     <Skill />
 
-    <Experience />
+    <!-- Sección de proyectos -->
+    <Projects />
+
+    <Timeline />
+    
+    <!-- Sección de contacto -->
+    <Contact />
   </v-container>
 </template>
 
@@ -44,8 +53,11 @@ import BasicList from '@/components/cv/BasicList.vue'
 import SocialButtons from '@/components/cv/Social.vue'
 import Photo from '@/components/cv/Photo.vue'
 import AboutMe from '@/components/cv/about/AboutMe.vue'
+// import Stats from '@/components/cv/stats/Stats.vue'
 import Skill from '@/components/cv/skill/Skill.vue'
-import Experience from '@/components/cv/experience/Experience.vue'
+import Projects from '@/components/cv/projects/Projects.vue'
+import Timeline from '@/components/cv/experience/Timeline.vue'
+import Contact from '@/components/cv/contact/Contact.vue'
 
 
 const { mobile } = useDisplay()

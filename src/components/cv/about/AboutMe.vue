@@ -1,5 +1,5 @@
 <template>
-  <Title :title="$t('titles.aboutMe')"/>
+  <SimpleTitle :title="$t('titles.aboutMe')"/>
   <v-row>
     <v-col cols="12">
       <p class="text-justify">
@@ -10,5 +10,5 @@
   
 </template>
 <script setup>
-import Title from '@/components/utils/Title.vue'
+import SimpleTitle from '@/components/utils/SimpleTitle.vue'
 </script>

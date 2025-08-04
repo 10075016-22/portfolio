@@ -1,5 +1,5 @@
 <template>
-  <Title :title="$t('titles.habilities')"/>
+  <SimpleTitle :title="$t('titles.habilities')" color="primary"/>
   <v-row>
     <ProgressInfo 
       v-for="(item, index) in aSkill" 
@@ -11,6 +11,7 @@
       :progress="item.value"
       :key="index +'__'"
       :max="item.max"
+      :delay="index * 200"
     />
   </v-row>
 </template>
@@ -18,7 +19,7 @@
 import { onMounted, ref } from "vue";
 import { useDisplay } from "vuetify/lib/framework.mjs";
 import ProgressInfo from "@/components/utils/ProgressInfo.vue";
-import Title from '@/components/utils/Title.vue'
+import SimpleTitle from '@/components/utils/SimpleTitle.vue'
 
 const { mobile } = useDisplay();
 

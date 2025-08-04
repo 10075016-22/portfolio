@@ -5,6 +5,7 @@
       <Whatsapp />
       <Email class="ma-2"/>
       <Gitlab/>
+      <Github/>
       <CVDownload />
     </v-card-text>
   </v-card>
@@ -14,6 +15,6 @@ import Whatsapp from '@/components/cv/buttons/Whatsapp.vue'
 import LinkedIn from '@/components/cv/buttons/LinkedIn.vue'
 import Email from '@/components/cv/buttons/Email.vue'
 import Gitlab from '@/components/cv/buttons/Gitlab.vue'
-
+import Github from '@/components/cv/buttons/Github.vue'
 import CVDownload from '@/components/cv/buttons/CvDownload.vue'
 </script>

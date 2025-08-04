@@ -3,7 +3,10 @@
   "titles": {
     "aboutMe": "Sobre mi",
     "habilities": "Habilidades y Conocimientos",
-    "workExperience": "Experiencia laboral"
+    "workExperience": "Experiencia laboral",
+    "projects": "Proyectos Realizados",
+    "stats": "Estadísticas Profesionales",
+    "contact": "Contacto"
   },
   "text": {
     "aboutMe": "Hola 👋, Me llamo Santiago Lopez, un Ingeniero de sistemas apasionado por la innovación y el crecimiento personal. Disfruto enfrentando desafíos y aprendiendo constantemente. Fuera del trabajo, me encanta pasar tiempo al aire libre, con amigos y familiares, o viajando en mi moto, algo que me encanta hacer. Estoy emocionado por las oportunidades que el futuro tiene reservadas y listo para enfrentarlas con determinación y una sonrisa en el rostro."
@@ -37,7 +40,43 @@
     "hablemosWhatsapp": "Hablemos por whatsapp",
     "linkedIn": "Visita mi perfil",
     "gitlab": "Visita mi perfil de Gitlab",
+    "github": "Visita mi perfil de Github",
     "email": "Contactame por correo"
+  },
+  "contact": {
+    "subtitle": "¿Tienes un proyecto en mente?",
+    "description": "Estoy siempre interesado en nuevas oportunidades y proyectos desafiantes. No dudes en contactarme si quieres trabajar juntos o simplemente quieres charlar sobre tecnología.",
+    "formTitle": "Envíame un mensaje",
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "send": "Enviar Mensaje"
+    }
+  },
+  "projects": {
+    "all": "Todos",
+    "features": "Características principales",
+    "technologies": "Tecnologías utilizadas",
+    "demo": "Demo",
+    "code": "Código",
+    "status": "Estado",
+    "inProduction": "En Producción",
+    "inDevelopment": "En Desarrollo",
+    "paused": "Pausado",
+    "finished": "Completado"
+  },
+  "projectsfeatures": {
+    "gestionDocumentos": "Gestión de documentos",
+    "gestionUsuarios": "Gestión de usuarios",
+    "gestionRoles": "Gestión de roles",
+    "gestionPermisos": "Gestión de permisos",
+    "gestionSorteos": "Gestión de sorteos",
+    "gestionPremios": "Gestión de premios",
+    "gestionGanadores": "Gestión de ganadores",
+    "gestionEnvioCorreos": "Gestión de envío de correos",
+    "integracionWompi": "Integración con Wompi para pagos"
   }
 }
 
