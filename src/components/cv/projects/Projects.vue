@@ -73,7 +73,7 @@
     </v-row>
 
     <!-- Modal para detalles del proyecto -->
-    <v-dialog v-model="showProjectModal" :max-width="mobile ? '100%' : '650'"  scrollable style="justify-content: flex-start;">
+    <v-dialog v-model="showProjectModal" :max-width="mobile ? '100%' : '650'"  scrollable :style="{justifyContent: mobile ? 'flex-start' : 'center'}">
       <v-card v-if="selectedProject">
         <v-img :src="selectedProject.image" height="250" cover/>
         <v-card-title class="text-h5 pa-4 font-weight-bold">
