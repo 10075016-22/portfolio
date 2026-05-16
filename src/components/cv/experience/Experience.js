@@ -10,7 +10,7 @@ export function createExperienceList(t) {
   return [
     {
       id: 1,
-      fecha: `Sep 2022 - ${t('others.actualidad')}`,
+      fecha: `Nov 2025 - ${t('others.actualidad')}`,
       cargo: `${t('cargos.frontend')} ${t('cargos.semisenior')}`,
       empresa: 'Homepower SAS',
       descripcion: t('experience.descripcion.homepower'),
