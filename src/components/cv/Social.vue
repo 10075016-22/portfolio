@@ -1,15 +1,16 @@
 <template>
-  <v-card elevation="0">
-    <v-card-text>
-      <LinkedIn />    
+  <div class="rounded-xl border border-[rgb(var(--v-theme-outline))]/30 bg-[rgb(var(--v-theme-surface))]/60 p-4 shadow-sm backdrop-blur-sm dark:border-slate-600/40">
+    <div class="flex flex-wrap items-center gap-2">
+      <LinkedIn />
       <Whatsapp />
-      <Email class="ma-2"/>
-      <Gitlab/>
-      <Github/>
+      <Email />
+      <Gitlab />
+      <Github />
       <CVDownload />
-    </v-card-text>
-  </v-card>
+    </div>
+  </div>
 </template>
+
 <script setup>
 import Whatsapp from '@/components/cv/buttons/Whatsapp.vue'
 import LinkedIn from '@/components/cv/buttons/LinkedIn.vue'

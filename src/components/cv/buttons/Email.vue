@@ -1,22 +1,15 @@
 <template>
-  <v-tooltip :text="$t('hover.email')" location="top">
-    <template v-slot:activator="{ props }">
-      <v-btn
-        class="ma-2"
-        color="primary"
-        icon
-        density="comfortable"
-        @click="__open"
-        v-bind="props"
-      >
-        <v-icon color="white">mdi-email-outline</v-icon>
-      </v-btn>
-    </template>
-  </v-tooltip>
+  <IconTooltipBtn :label="$t('hover.email')" button-class="m-2 bg-[rgb(var(--v-theme-primary))] text-white" @click="__open">
+    <Icon icon="mdi:email-outline" class="size-5 text-white" aria-hidden="true" />
+  </IconTooltipBtn>
 </template>
+
 <script setup>
-const URL = "mailto:sell3.1998@hotmail.com";
+import { Icon } from '@iconify/vue'
+import IconTooltipBtn from '@/components/ui/IconTooltipBtn.vue'
+
+const URL = 'mailto:sell3.1998@hotmail.com'
 const __open = () => {
-  window.open(URL);
-};
+  window.open(URL)
+}
 </script>

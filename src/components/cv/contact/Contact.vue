@@ -1,50 +1,50 @@
 <template>
-  <div class="contact-section">
+  <div class="my-12">
     <SimpleTitle :title="$t('titles.contact')" color="primary" />
-    
-    <v-row>
-      <v-col :cols="12">
-        <div class="contact-info">
-          <h3 class="contact-subtitle mb-4">{{ $t('contact.subtitle') }}</h3>
-          <p class=" mb-6">{{ $t('contact.description') }}</p>
-          
-          <v-row justify="center">
-            <v-col v-for="(method, index) in contactMethods" :key="index" :cols="mobile ? 6 : 4" class="contact-method" :class="{ 'contact-method--animated': method.isVisible }" @click="handleContact(method)">
-              <div class="contact-method-icon">
-                <v-icon :icon="method.icon" size="32" :color="method.color" />
-              </div>
-              <div class="contact-method-content">
-                <h4 class="contact-method-title">{{ method.title }}</h4>
-                <p>{{ method.value }}</p>
-              </div>
-              <div class="contact-method-arrow">
-                <v-icon icon="mdi-arrow-right" size="20" />
-              </div>
-            </v-col>
-          </v-row>
+
+    <div class="grid grid-cols-1">
+      <div>
+        <h3 class="mb-4 text-2xl font-bold text-[rgb(var(--v-theme-primary))]">
+          {{ $t('contact.subtitle') }}
+        </h3>
+        <p class="mb-6 text-[rgb(var(--v-theme-on-surface-variant))]">{{ $t('contact.description') }}</p>
+
+        <div class="mx-auto flex max-w-4xl flex-wrap justify-center gap-4">
+          <div
+            v-for="(method, index) in contactMethods"
+            :key="index"
+            class="group flex min-h-[72px] w-full cursor-pointer items-center gap-3 rounded-xl border border-[rgb(var(--v-theme-outline))]/20 bg-[rgb(var(--v-theme-surface))]/50 p-4 transition-all duration-300 ease-out motion-reduce:translate-x-0 motion-reduce:opacity-100 hover:bg-[rgb(var(--v-theme-surface))]/85 hover:-translate-y-0.5 hover:shadow-lg sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)]"
+            :class="method.isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'"
+            :data-method-id="method.id"
+            @click="handleContact(method)"
+          >
+            <div class="shrink-0 rounded-lg bg-[rgb(var(--v-theme-primary))]/10 p-2">
+              <Icon :icon="mdiToIconify(method.icon)" class="size-8" :class="methodIconClass(method.color)" />
+            </div>
+            <div class="min-w-0 flex-1 text-[rgb(var(--v-theme-on-surface))]">
+              <h4 class="m-0 text-base font-semibold">{{ method.title }}</h4>
+              <p class="m-0 mt-1 text-sm text-[rgb(var(--v-theme-on-surface-variant))]">{{ method.value }}</p>
+            </div>
+            <div
+              class="shrink-0 text-[rgb(var(--v-theme-on-surface-variant))] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100"
+            >
+              <Icon icon="mdi:arrow-right" class="size-5" aria-hidden="true" />
+            </div>
+          </div>
         </div>
-      </v-col>
-    </v-row>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { onMounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useDisplay } from 'vuetify/lib/framework.mjs'
+import { Icon } from '@iconify/vue'
 import SimpleTitle from '@/components/utils/SimpleTitle.vue'
+import { mdiToIconify } from '@/utils/mdiToIconify.js'
 
 const { t } = useI18n()
-const { mobile } = useDisplay()
-
-const isSubmitting = ref(false)
-
-const form = ref({
-  name: '',
-  email: '',
-  subject: '',
-  message: ''
-})
 
 const contactMethods = computed(() => [
   {
@@ -54,7 +54,7 @@ const contactMethods = computed(() => [
     icon: 'mdi-email',
     color: 'primary',
     action: 'mailto:sell3.1998@hotmail.com',
-    isVisible: true
+    isVisible: true,
   },
   {
     id: 2,
@@ -63,7 +63,7 @@ const contactMethods = computed(() => [
     icon: 'mdi-whatsapp',
     color: 'success',
     action: 'https://wa.me/+573002750183',
-    isVisible: true
+    isVisible: true,
   },
   {
     id: 3,
@@ -72,7 +72,7 @@ const contactMethods = computed(() => [
     icon: 'mdi-linkedin',
     color: 'info',
     action: 'https://www.linkedin.com/in/santiago-lopez-06812410a/',
-    isVisible: true
+    isVisible: true,
   },
   {
     id: 4,
@@ -81,11 +81,21 @@ const contactMethods = computed(() => [
     icon: 'mdi-github',
     color: 'dark',
     action: 'https://github.com/10075016-22',
-    isVisible: true
-  }
+    isVisible: true,
+  },
 ])
 
-const handleContact = (method) => {
+function methodIconClass(color) {
+  const m = {
+    primary: 'text-blue-600 dark:text-blue-400',
+    success: 'text-emerald-600 dark:text-emerald-400',
+    info: 'text-sky-600 dark:text-sky-400',
+    dark: 'text-slate-800 dark:text-slate-200',
+  }
+  return m[color] || m.primary
+}
+
+function handleContact(method) {
   if (method.action.startsWith('mailto:')) {
     window.location.href = method.action
   } else {
@@ -93,145 +103,24 @@ const handleContact = (method) => {
   }
 }
 
-const submitForm = async () => {
-  isSubmitting.value = true
-  
-  // Simular envío del formulario
-  await new Promise(resolve => setTimeout(resolve, 2000))
-  
-  // Aquí iría la lógica real de envío
-  console.log('Formulario enviado:', form.value)
-  
-  // Limpiar formulario
-  form.value = {
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  }
-  
-  isSubmitting.value = false
-}
-
 onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const methodId = parseInt(entry.target.dataset.methodId)
-        const method = contactMethods.value.find(m => m.id === methodId)
-        if (method) {
-          method.isVisible = true
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const methodId = parseInt(entry.target.dataset.methodId, 10)
+          const method = contactMethods.value.find((m) => m.id === methodId)
+          if (method) {
+            method.isVisible = true
+          }
         }
-      }
-    })
-  }, { threshold: 0.3 })
+      })
+    },
+    { threshold: 0.3 },
+  )
 
-  // Observar cada método de contacto
-  document.querySelectorAll('.contact-method').forEach((method, index) => {
-    method.dataset.methodId = contactMethods.value[index].id
-    observer.observe(method)
+  document.querySelectorAll('[data-method-id]').forEach((el) => {
+    observer.observe(el)
   })
 })
 </script>
-
-<style scoped>
-.contact-section {
-  margin: 3rem 0;
-}
-
-.contact-subtitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: rgb(var(--v-theme-primary));
-}
-
-.contact-description {
-  font-size: 1rem;
-  color: rgb(var(--v-theme-on-surface-variant));
-  line-height: 1.6;
-}
-
-.contact-methods {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-method {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  background: rgba(var(--v-theme-surface), 0.5);
-  border: 1px solid rgba(var(--v-theme-outline), 0.1);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateX(-30px);
-}
-
-.contact-method--animated {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.contact-method:hover {
-  background: rgba(var(--v-theme-surface), 0.8);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.contact-method-icon {
-  margin-right: 1rem;
-  padding: 0.5rem;
-  background: rgba(var(--v-theme-primary), 0.1);
-  border-radius: 8px;
-}
-
-.contact-method-content {
-  flex: 1;
-}
-
-.contact-method-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: rgb(var(--v-theme-on-surface));
-  margin: 0;
-}
-
-.contact-method-value {
-  font-size: 0.9rem;
-  color: rgb(var(--v-theme-on-surface-variant));
-  margin: 0.25rem 0 0 0;
-}
-
-.contact-method-arrow {
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.contact-method:hover .contact-method-arrow {
-  opacity: 1;
-  transform: translateX(4px);
-}
-
-.contact-form-container {
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.contact-form {
-  width: 100%;
-  background: rgba(var(--v-theme-surface), 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(var(--v-theme-outline), 0.1);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .contact-form-container {
-    margin-top: 2rem;
-  }
-}
-</style> 

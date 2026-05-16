@@ -1,64 +1,61 @@
 <template>
-  <div class="stats-section">
+  <div class="my-12">
+    <span class="hidden animate-count-up" aria-hidden="true" />
     <SimpleTitle :title="$t('titles.stats')" color="primary" />
-    
-    <v-row>
-      <v-col
-        v-for="stat in stats"
-        :key="stat.id"
-        :cols="mobile ? 6 : 3"
-        class="mb-4"
-      >
-        <v-card
-          class="stat-card"
-          elevation="2"
-          :class="{ 'stat-card--animated': stat.isVisible }"
+
+    <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div v-for="stat in stats" :key="stat.id" class="mb-4">
+        <article
+          class="group flex h-full flex-col rounded-xl border border-[rgb(var(--v-theme-outline))]/30 bg-[rgb(var(--v-theme-surface))]/80 p-6 text-center shadow-sm backdrop-blur-sm transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-2 hover:shadow-xl"
+          :class="stat.isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
+          :data-stat-id="stat.id"
         >
-          <v-card-text class="text-center pa-6">
-            <div class="stat-icon-wrapper mb-3">
-              <v-icon
-                :icon="stat.icon"
-                :color="stat.color"
-                size="48"
-                class="stat-icon"
-              />
-            </div>
-            
-            <div class="stat-number-wrapper">
-              <span 
-                class="stat-number"
-                :class="{ 'animate-count': stat.isVisible }"
-                :data-target="stat.value"
-              >
-                {{ stat.isVisible ? stat.value : 0 }}
-              </span>
-              <span class="stat-symbol">{{ stat.symbol }}</span>
-            </div>
-            
-            <p class="stat-label mt-2">{{ stat.label }}</p>
-            
-            <div class="stat-progress mt-3">
-              <v-progress-linear
-                :model-value="stat.isVisible ? stat.percentage : 0"
-                :color="stat.color"
-                height="4"
-                rounded
-                class="stat-progress-bar"
-              />
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
+          <div class="mb-3 inline-flex justify-center">
+            <Icon
+              :icon="mdiToIconify(stat.icon)"
+              class="size-12 transition duration-300 ease-in-out group-hover:scale-110"
+              :class="statIconClass(stat.color)"
+            />
+          </div>
+
+          <div class="flex items-baseline justify-center gap-1">
+            <span
+              class="text-4xl font-bold text-[rgb(var(--v-theme-primary))] max-md:text-[2rem]"
+              :class="stat.isVisible ? 'motion-safe:animate-count-up' : ''"
+            >
+              {{ stat.isVisible ? stat.value : 0 }}
+            </span>
+            <span
+              class="text-2xl font-semibold text-[rgb(var(--v-theme-primary))] max-md:text-xl"
+            >{{ stat.symbol }}</span>
+          </div>
+
+          <p
+            class="mt-2 text-sm font-medium text-[rgb(var(--v-theme-on-surface))] max-md:text-xs"
+          >
+            {{ stat.label }}
+          </p>
+
+          <div
+            class="mx-auto mt-3 h-1 max-w-[80px] w-full overflow-hidden rounded-full bg-[rgb(var(--v-theme-outline))]/40"
+          >
+            <div
+              class="h-full rounded-full transition-all duration-700"
+              :class="statBarClass(stat.color)"
+              :style="{ width: stat.isVisible ? `${stat.percentage}%` : '0%' }"
+            />
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useDisplay } from 'vuetify/lib/framework.mjs'
+import { Icon } from '@iconify/vue'
 import SimpleTitle from '@/components/utils/SimpleTitle.vue'
-
-const { mobile } = useDisplay()
+import { mdiToIconify } from '@/utils/mdiToIconify.js'
 
 const stats = ref([
   {
@@ -69,7 +66,7 @@ const stats = ref([
     icon: 'mdi-briefcase',
     color: 'primary',
     percentage: 80,
-    isVisible: false
+    isVisible: false,
   },
   {
     id: 2,
@@ -79,7 +76,7 @@ const stats = ref([
     icon: 'mdi-rocket-launch',
     color: 'success',
     percentage: 90,
-    isVisible: false
+    isVisible: false,
   },
   {
     id: 3,
@@ -89,7 +86,7 @@ const stats = ref([
     icon: 'mdi-code-braces',
     color: 'warning',
     percentage: 85,
-    isVisible: false
+    isVisible: false,
   },
   {
     id: 4,
@@ -99,129 +96,48 @@ const stats = ref([
     icon: 'mdi-heart',
     color: 'error',
     percentage: 95,
-    isVisible: false
-  }
+    isVisible: false,
+  },
 ])
 
-onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const statId = parseInt(entry.target.dataset.statId)
-        const stat = stats.value.find(s => s.id === statId)
-        if (stat) {
-          stat.isVisible = true
-        }
-      }
-    })
-  }, { threshold: 0.5 })
+function statIconClass(color) {
+  const m = {
+    primary: 'text-blue-600 dark:text-blue-400',
+    success: 'text-emerald-600 dark:text-emerald-400',
+    warning: 'text-amber-500',
+    error: 'text-red-500',
+  }
+  return m[color] || m.primary
+}
 
-  // Observar cada tarjeta de estadística
-  document.querySelectorAll('.stat-card').forEach((card, index) => {
-    card.dataset.statId = stats.value[index].id
+function statBarClass(color) {
+  const m = {
+    primary: 'bg-blue-600 dark:bg-blue-400',
+    success: 'bg-emerald-600 dark:bg-emerald-400',
+    warning: 'bg-amber-500',
+    error: 'bg-red-500',
+  }
+  return m[color] || m.primary
+}
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const statId = parseInt(entry.target.dataset.statId, 10)
+          const stat = stats.value.find((s) => s.id === statId)
+          if (stat) {
+            stat.isVisible = true
+          }
+        }
+      })
+    },
+    { threshold: 0.5 },
+  )
+
+  document.querySelectorAll('[data-stat-id]').forEach((card) => {
     observer.observe(card)
   })
 })
 </script>
-
-<style scoped>
-.stats-section {
-  margin: 3rem 0;
-}
-
-.stat-card {
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(30px);
-  opacity: 0;
-  height: 100%;
-}
-
-.stat-card--animated {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.stat-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
-}
-
-.stat-icon-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.stat-icon {
-  transition: all 0.3s ease;
-}
-
-.stat-card:hover .stat-icon {
-  transform: scale(1.1);
-}
-
-.stat-number-wrapper {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 4px;
-}
-
-.stat-number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: rgb(var(--v-theme-primary));
-  transition: all 0.6s ease;
-}
-
-.stat-symbol {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: rgb(var(--v-theme-primary));
-}
-
-.stat-label {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: rgb(var(--v-theme-on-surface));
-  margin: 0;
-}
-
-.stat-progress {
-  max-width: 80px;
-  margin: 0 auto;
-}
-
-.stat-progress-bar {
-  transition: all 0.8s ease;
-}
-
-.animate-count {
-  animation: countUp 1.5s ease-out;
-}
-
-@keyframes countUp {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .stat-number {
-    font-size: 2rem;
-  }
-  
-  .stat-symbol {
-    font-size: 1.2rem;
-  }
-  
-  .stat-label {
-    font-size: 0.8rem;
-  }
-}
-</style> 

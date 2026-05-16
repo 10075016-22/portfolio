@@ -1,4 +1,7 @@
 {
+  "common": {
+    "close": "Close"
+  },
   "message": "Hello word",
   "titles": {
     "aboutMe": "About me",
@@ -22,10 +25,13 @@
     "fullstacks": "Fullstacks developer",
     "ingenieroSoftware": "Software Engineer",
     "desarrolladorSoftware": "Software developer",
-    "desarrolladorWeb": "Web developer"
+    "desarrolladorWeb": "Web developer",
+    "semisenior": "Semisenior"
   },
   "experience": {
     "descripcion": {
+      "homepower": "Frontend developer semisenior, in charge of the creation of UI library components, for internal company management. Development of new features and user stories within the company's applications. Angular version 18+, Nx for managing monorepos, StencilJs, Vitest, Jest and Typescript.",
+      "homepower sas": "Frontend developer semisenior, in charge of the creation of UI library components, for internal company management. Development of new features and user stories within the company's applications. Angular version 18+, Nx for managing monorepos, StencilJs, Vitest, Jest and Typescript.",
       "techboss": "Fullstacks developer, in charge of providing solutions at the level of services and design of the SEIF product, in addition, I have created new functionality to platforms within the company. Lead developer of creation, maintenance and deployments of new product (Guvi).",
       "sipremcol": "Leader of the frontend development team, in charge of the creation of products such as Siprem GD, Lavado, Poda, etc. Providing support to the rest services using the company's web applications.",
       "gmp": "Developer with fullstacks functions, implementing solutions using php technologies, CRM and Vue Js frontend development framework.",

@@ -1,4 +1,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-body {
-    font-family:  'Poppins', sans-serif !important;
+
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Variables RGB (espacio) consumidas como rgb(var(--v-theme-*)) en toda la app */
+:root {
+  --v-theme-primary: 25 118 210;
+  --v-theme-secondary: 156 39 176;
+  --v-theme-surface: 255 255 255;
+  --v-theme-on-surface: 30 41 59;
+  --v-theme-on-surface-variant: 100 116 139;
+  --v-theme-outline: 226 232 240;
+}
+
+html.dark {
+  --v-theme-primary: 96 165 250;
+  --v-theme-secondary: 186 104 200;
+  --v-theme-surface: 30 41 59;
+  --v-theme-on-surface: 241 245 249;
+  --v-theme-on-surface-variant: 148 163 184;
+  --v-theme-outline: 71 85 105;
+}
+
+@theme {
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+
+  --animate-fade-in-up: fade-in-up 0.6s ease-out both;
+  --animate-count-up: count-up 1.5s ease-out both;
+  --animate-title-shine: title-shine 2s ease-in-out infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes count-up {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes title-shine {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@layer base {
+  a[href] {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .locale-enter-active,
+  .locale-leave-active {
+    transition:
+      opacity 0.28s cubic-bezier(0.33, 1, 0.68, 1),
+      transform 0.28s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  .locale-enter-from,
+  .locale-leave-to {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .locale-enter-active,
+    .locale-leave-active {
+      transition-duration: 0.01ms;
+    }
+
+    .locale-enter-from,
+    .locale-leave-to {
+      transform: none;
+    }
+  }
 }

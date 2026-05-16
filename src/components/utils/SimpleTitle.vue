@@ -1,30 +1,16 @@
 <template>
-  <div class="simple-title-container">
-    <h2 class="simple-title">
+  <div class="my-8 mb-6 mt-8">
+    <h2 class="relative m-0 text-3xl font-bold max-md:text-2xl text-[rgb(var(--v-theme-on-surface))]">
       {{ title }}
     </h2>
   </div>
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   title: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 })
 </script>
-
-<style scoped>
-.simple-title-container {
-  margin: 2rem 0 1.5rem 0;
-}
-
-.simple-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: rgb(var(--v-theme-on-surface));
-  margin: 0;
-  position: relative;
-}
-</style> 

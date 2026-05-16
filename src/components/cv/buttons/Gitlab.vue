@@ -1,22 +1,15 @@
 <template>
-  <v-tooltip :text="$t('hover.gitlab')" location="top">
-    <template v-slot:activator="{ props }">
-      <v-btn
-        color="#fc6d26"
-        icon
-        density="comfortable"
-        class="mr-2"
-        @click="__open"
-        v-bind="props"
-      >
-        <v-icon color="white">mdi-gitlab</v-icon>
-      </v-btn>
-    </template>
-  </v-tooltip>
+  <IconTooltipBtn :label="$t('hover.gitlab')" button-class="mr-2 bg-[#fc6d26] text-white" @click="__open">
+    <Icon icon="mdi:gitlab" class="size-5 text-white" aria-hidden="true" />
+  </IconTooltipBtn>
 </template>
-  <script setup>
-const URL = "https://gitlab.com/sell3.thiago";
+
+<script setup>
+import { Icon } from '@iconify/vue'
+import IconTooltipBtn from '@/components/ui/IconTooltipBtn.vue'
+
+const URL = 'https://gitlab.com/sell3.thiago'
 const __open = () => {
-  window.open(URL, "_blank");
-};
+  window.open(URL, '_blank')
+}
 </script>

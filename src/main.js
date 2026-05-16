@@ -3,14 +3,9 @@ import { createI18n } from 'vue-i18n'
 
 import App from './App.vue'
 import router from './router'
-import vuetify from './plugins/vuetify'
-import { loadFonts } from './plugins/webfontloader'
-
-loadFonts()
 
 import './assets/style.css'
 
-// locale
 import en from './locale/en.json'
 import es from './locale/es.json'
 
@@ -19,12 +14,8 @@ const i18n = createI18n({
   locale: 'es',
   messages: {
     en: en,
-    es: es
-  }
+    es: es,
+  },
 })
 
-createApp(App)
-  .use(i18n)
-  .use(router)
-  .use(vuetify)
-  .mount('#app')
+createApp(App).use(i18n).use(router).mount('#app')

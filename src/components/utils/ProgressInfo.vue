@@ -1,59 +1,73 @@
 <template>
-  <v-col :cols="mobile ? 12 : 4">
-    <div
-      class="skill-item"
-      :class="{ 'skill-item--animated': isVisible }"
-      :style="{ animationDelay: `${delay}ms` }"
-    >
-      <div class="d-flex justify-space-between">
-        <div class="d-flex">
-          <v-icon size="45" :color="props.color" v-if="props.icon !== ''" class="skill-icon">
-            {{ props.icon }}
-          </v-icon>
-          <img :src="props.image" v-if="props.image !== ''" :alt="props.text" width="45" class="mt-2 skill-image"/>
-          <p class="mt-3 ml-2 skill-text">{{ props.text }}</p>
+  <div
+    class="group min-w-0 flex h-full flex-col rounded-lg border border-[rgb(var(--v-theme-outline))]/20 bg-[rgb(var(--v-theme-surface))]/50 p-4 backdrop-blur-sm transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:translate-x-0 motion-reduce:opacity-100 hover:bg-[rgb(var(--v-theme-surface))]/85 hover:-translate-y-0.5 hover:shadow-lg"
+    :class="isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'"
+    :style="{ transitionDelay: `${delay}ms` }"
+  >
+      <div class="flex justify-between gap-2">
+        <div class="flex min-w-0 items-start gap-2">
+          <Icon
+            v-if="iconLabel"
+            :icon="iconLabel"
+            class="skill-icon mt-1 size-11 shrink-0 transition duration-300 ease-in-out group-hover:scale-110"
+            :class="iconToneClass"
+            :style="iconInlineStyle"
+            aria-hidden="true"
+          />
+          <img
+            v-if="props.image !== ''"
+            :src="props.image"
+            :alt="props.text"
+            width="45"
+            height="45"
+            class="skill-image mt-1 size-11 shrink-0 object-contain transition duration-300 ease-in-out group-hover:scale-110"
+          />
+          <p class="mt-3 font-semibold text-[rgb(var(--v-theme-on-surface))] transition-colors duration-300 group-hover:text-[rgb(var(--v-theme-primary))]">{{ props.text }}</p>
         </div>
-        <div class="mr-3">
+        <div class="mr-1 shrink-0 text-right text-sm text-[rgb(var(--v-theme-on-surface-variant))]">
           <p class="mt-2">{{ props.label }}</p>
         </div>
       </div>
-      <v-progress-linear
-        :model-value="isVisible ? props.progress : 0"
-        class="mt-2 skill-progress"
-        color="blue"
-        :indeterminate="props.progress === 0"
-        :max="props.max"
-        height="8"
-        rounded
-      />
-    </div>
-  </v-col>
+      <div
+        class="skill-progress mt-2 h-2 w-full overflow-hidden rounded-full bg-[rgb(var(--v-theme-outline))]/30"
+        role="progressbar"
+        :aria-valuenow="displayValue"
+        :aria-valuemax="props.max"
+      >
+        <div
+          class="h-full rounded-full bg-linear-to-r from-blue-600 to-purple-600 transition-all duration-700 dark:from-blue-400 dark:to-violet-400"
+          :style="{ width: `${percent}%` }"
+          :class="{ 'animate-pulse': props.progress === 0 }"
+        />
+      </div>
+  </div>
 </template>
+
 <script setup>
-import { ref, onMounted } from "vue";
-import { useDisplay } from "vuetify/lib/framework.mjs";
-const { mobile } = useDisplay();
+import { ref, computed, onMounted } from 'vue'
+import { Icon } from '@iconify/vue'
+import { mdiToIconify } from '@/utils/mdiToIconify.js'
 
 const props = defineProps({
   color: {
     type: String,
-    default: () => "",
+    default: () => '',
   },
   icon: {
     type: String,
-    default: () => "",
+    default: () => '',
   },
   image: {
     type: String,
-    default: () => "",
+    default: () => '',
   },
   text: {
     type: String,
-    default: () => "",
+    default: () => '',
   },
   label: {
     type: String,
-    default: () => "",
+    default: () => '',
   },
   progress: {
     type: Number,
@@ -67,77 +81,48 @@ const props = defineProps({
     type: Number,
     default: () => 0,
   },
-});
+})
 
-const isVisible = ref(false);
+const iconLabel = computed(() => mdiToIconify(props.icon))
+
+const displayValue = computed(() =>
+  props.progress === 0 ? 0 : props.progress,
+)
+
+const percent = computed(() => {
+  if (!props.max) return 0
+  const raw = isVisible.value ? props.progress : 0
+  return Math.min(100, Math.round((raw / props.max) * 100))
+})
+
+const iconInlineStyle = computed(() => {
+  const c = props.color
+  if (c && c.startsWith('#')) {
+    return { color: c }
+  }
+  return {}
+})
+
+const iconToneClass = computed(() => {
+  const c = props.color
+  if (c && c.startsWith('#')) {
+    return ''
+  }
+  const map = {
+    warning: 'text-amber-500',
+    success: 'text-emerald-500',
+    blue: 'text-blue-500',
+    teal: 'text-teal-500',
+  }
+  return map[c] || 'text-[rgb(var(--v-theme-primary))]'
+})
+
+const isVisible = ref(false)
 
 onMounted(() => {
   setTimeout(() => {
-    isVisible.value = true;
-  }, props.delay);
-});
+    isVisible.value = true
+  }, props.delay)
+})
 </script>
 
-<style scoped>
-.skill-item {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 1rem;
-  border-radius: 8px;
-  background: rgba(var(--v-theme-surface), 0.5);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(var(--v-theme-outline), 0.1);
-}
-
-.skill-item--animated {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.skill-item:hover {
-  background: rgba(var(--v-theme-surface), 0.8);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.skill-icon,
-.skill-image {
-  transition: all 0.3s ease;
-}
-
-.skill-item:hover .skill-icon,
-.skill-item:hover .skill-image {
-  transform: scale(1.1);
-}
-
-.skill-text {
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.skill-item:hover .skill-text {
-  color: rgb(var(--v-theme-primary));
-}
-
-.skill-label {
-  font-size: 0.9rem;
-  color: rgb(var(--v-theme-on-surface-variant));
-}
-
-.skill-progress {
-  transition: all 0.8s ease;
-}
-
-.skill-progress .v-progress-linear__background {
-  background: rgba(var(--v-theme-outline), 0.2) !important;
-}
-
-.skill-progress .v-progress-linear__determinate {
-  background: linear-gradient(
-    90deg,
-    rgb(var(--v-theme-primary)),
-    rgb(var(--v-theme-secondary))
-  ) !important;
-}
-</style>

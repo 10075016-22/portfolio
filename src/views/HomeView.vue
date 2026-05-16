@@ -1,70 +1,90 @@
 <template>
-  <v-container xl="8">
-    <!-- Sección del nombre -->
-    <v-row>
-      <v-col class="d-flex justify-space-between">
-        <p :class="[ mobile ? 'text-subtitle' : 'text-h4', 'font-weight-bold', 'mt-2']">Santiago Lopez Lazaro</p>
-        <div :class="[mobile ? 'text-center' : '']">
-          <v-avatar size="auto" class="mr-2" density="compact">
-            <v-img :src="`/icons/${$i18n.locale}.png`"/>
-          </v-avatar>
-          <v-btn elevation="0" icon @click="$i18n.locale = $i18n.locale == 'es' ? 'en' : 'es' " :size="mobile ? 'small' : 'default'" class="mr-1"> <v-icon>mdi-translate</v-icon></v-btn>
-          <v-btn @click="toggleTheme" elevation="0" icon :size="mobile ? 'small' : 'default' "> <v-icon>mdi-theme-light-dark</v-icon></v-btn>
+  <div class="flex flex-col gap-14 md:gap-24">
+    <ParallaxSection :intensity="34">
+      <div class="space-y-8">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p :class="mobile ? 'text-xl font-bold' : 'text-2xl font-bold md:text-3xl'" class="mt-2">
+            Santiago Lopez Lazaro
+          </p>
+          <div :class="mobile ? 'flex flex-wrap items-center justify-center gap-1' : 'flex items-center gap-2'">
+            <div class="mr-2 inline-flex h-9 w-auto items-center overflow-hidden rounded-full ring-1 ring-slate-200 dark:ring-slate-600">
+              <img :src="`/icons/${$i18n.locale}.png`" alt="" class="h-9 max-w-[48px] object-contain" width="36" height="36" />
+            </div>
+            <button
+              type="button"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[rgb(var(--v-theme-on-surface))] transition hover:bg-slate-200/60 dark:hover:bg-slate-700/60"
+              :class="mobile ? 'h-9 w-9' : ''"
+              aria-label="Cambiar idioma"
+              @click="$i18n.locale = $i18n.locale === 'es' ? 'en' : 'es'"
+            >
+              <Icon icon="mdi:translate" class="size-6" />
+            </button>
+            <button
+              type="button"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-full text-[rgb(var(--v-theme-on-surface))] transition hover:bg-slate-200/60 dark:hover:bg-slate-700/60"
+              :class="mobile ? 'h-9 w-9' : ''"
+              aria-label="Tema"
+              @click="toggleTheme()"
+            >
+              <Icon icon="mdi:theme-light-dark" class="size-6" />
+            </button>
+          </div>
         </div>
-      </v-col>
-    </v-row>
 
-    <!-- Sección de información personal y redes sociales -->
-    <v-row>
-      <v-col :cols="mobile ? 12 : 6">
-        <BasicList class="mb-2"/>
-        <SocialButtons :class="[mobile ? 'd-flex justify-center' : '']" />
-      </v-col>
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
+          <div class="lg:col-span-6">
+            <BasicList class="mb-2" />
+            <SocialButtons :class="mobile ? 'flex flex-wrap justify-center' : ''" />
+          </div>
+          <div
+            :class="[
+              'flex lg:col-span-5 lg:col-start-8',
+              mobile ? 'justify-center' : 'justify-end lg:mr-3',
+            ]"
+          >
+            <Photo />
+          </div>
+        </div>
+      </div>
+    </ParallaxSection>
 
-      <!-- Sección de foto -->
-      <v-col :class="['d-flex', mobile ? 'justify-center' : 'justify-end', mobile ? '' : 'mr-3']" :cols="mobile ? 12 : 5">
-        <Photo />
-      </v-col>
-    </v-row>
+    <ParallaxSection :intensity="22">
+      <AboutMe />
+    </ParallaxSection>
 
-    <!-- Sección de información adicional -->
-    <AboutMe />
-    
-    <!-- Sección de estadísticas -->
-    <!-- <Stats /> -->
-    
-    <!-- Sección de habilidades -->
-    <Skill />
+    <ParallaxSection :intensity="26">
+      <Skill />
+    </ParallaxSection>
 
-    <!-- Sección de proyectos -->
-    <Projects />
+    <ParallaxSection :intensity="20">
+      <Projects />
+    </ParallaxSection>
 
-    <Timeline />
-    
-    <!-- Sección de contacto -->
-    <Contact />
-  </v-container>
+    <ParallaxSection :intensity="18">
+      <Timeline />
+    </ParallaxSection>
+
+    <ParallaxSection :intensity="16">
+      <Contact />
+    </ParallaxSection>
+  </div>
 </template>
 
 <script setup>
-import { useDisplay, useTheme } from 'vuetify/lib/framework.mjs'
-
+import { Icon } from '@iconify/vue'
+import ParallaxSection from '@/components/layout/ParallaxSection.vue'
 import BasicList from '@/components/cv/BasicList.vue'
 import SocialButtons from '@/components/cv/Social.vue'
 import Photo from '@/components/cv/Photo.vue'
 import AboutMe from '@/components/cv/about/AboutMe.vue'
-// import Stats from '@/components/cv/stats/Stats.vue'
 import Skill from '@/components/cv/skill/Skill.vue'
 import Projects from '@/components/cv/projects/Projects.vue'
 import Timeline from '@/components/cv/experience/Timeline.vue'
 import Contact from '@/components/cv/contact/Contact.vue'
+import { useBreakpoint } from '@/composables/useBreakpoint.js'
+import { usePortfolioTheme } from '@/composables/usePortfolioTheme.js'
 
+const { mobile } = useBreakpoint()
 
-const { mobile } = useDisplay()
-const theme = useTheme()
-
-const toggleTheme = () => {
-  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
-}
-
+const { toggleTheme } = usePortfolioTheme()
 </script>
